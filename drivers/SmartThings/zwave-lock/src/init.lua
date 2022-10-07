@@ -121,17 +121,17 @@ local function update_codes(driver, device, cmd)
             user_code = code,
             user_id_status = UserCode.user_id_status.ENABLED_GRANT_ACCESS}))
         end)
-        delay = delay + 2
+        delay = delay + 2.2
       else
         -- code deleted
         device.thread:call_with_delay(delay, function ()
           device:send(UserCode:Set({user_identifier = code_slot, user_id_status = UserCode.user_id_status.AVAILABLE}))
         end)
-        delay = delay + 2
+        delay = delay + 2.2
         device.thread:call_with_delay(delay, function ()
           device:send(UserCode:Get({user_identifier = code_slot}))
         end)
-        delay = delay + 2
+        delay = delay + 2.2
       end
     end
   end
